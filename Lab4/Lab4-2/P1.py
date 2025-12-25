@@ -1,4 +1,4 @@
-from bank import BankAccount, clac_interest
+from bank import BankAccount
 
 john = BankAccount("John", "saving", 500)
 tim = BankAccount("Tim", "loan", -1_000_000)
@@ -16,6 +16,6 @@ accounts = [john, tim, sarah_saving, sarah_loan]
 
 for acc in accounts:
     acc.print_customer()
-clac_interest(1000, 5, 100)
+BankAccount.clac_interest(1000, 5, 100)
 john.change_branch_name()
 print(f"{john.name}'s branch is now {john.branch_name}")

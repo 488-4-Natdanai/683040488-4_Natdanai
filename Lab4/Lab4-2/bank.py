@@ -50,22 +50,22 @@ class BankAccount:
     def get_loan(self, amount=0):
         if self.type == "loan" and self.balance >= -50000:
             self.balance -= amount
-    
-    #static
-def clac_interest(bal, int_rate, payment):
-    print("----- Loan Plan -----")
-    y = 0
-    while True:
-        y += 1
-        bal = bal+(bal*(int_rate*0.01))
-        if bal - payment < 0:
-            payment = bal
-        bala = bal - payment
-        print(F"Year {y}: loan = {bal:.2f}   payment {payment:.2f}   bal = {bala:.2f}")
-        bal = bala
-        if bal == 0:
-            print("----- End Plan -----")
-            break
+        
+        #static
+    def clac_interest(bal, int_rate, payment):
+        print("----- Loan Plan -----")
+        y = 0
+        while True:
+            y += 1
+            bal = bal+(bal*(int_rate*0.01))
+            if bal - payment < 0:
+                payment = bal
+            bala = bal - payment
+            print(F"Year {y}: loan = {bal:.2f}   payment {payment:.2f}   bal = {bala:.2f}")
+            bal = bala
+            if bal == 0:
+                print("----- End Plan -----")
+                break
 
 
                 
