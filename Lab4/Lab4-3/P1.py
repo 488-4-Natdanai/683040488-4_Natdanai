@@ -86,7 +86,7 @@ book.return_item()
 book.display_info()
 
 print()
-textbook = TextBook("Physics 101", "T001", "Serway", "Physics", "Grade 10")
+textbook = TextBook("In a range of time", "T001", "Kittikawin", "History", "Highschool")
 textbook.set_pages_count(500)
 textbook.display_course_info()
 
@@ -94,7 +94,7 @@ textbook.check_out()
 textbook.display_course_info()
 
 print()
-mag = Magazine("National Geographic", "M001", 202)
+mag = Magazine("TIME", "M001", 202)
 mag.display_issue()
 mag.check_out()
 mag.display_issue()
