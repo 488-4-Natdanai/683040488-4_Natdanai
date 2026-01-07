@@ -35,9 +35,9 @@ class Book(LibraryItem):
 
     def display_info(self):
         print(
-            f"Title: {self.title}, "
-            f"Author: {self.author}, "
-            f"Pages: {self.pages_count}, "
+            f"Title: {self.title}\n"
+            f"Author: {self.author}\n"
+            f"Pages: {self.pages_count}\n"
             f"Status: {self.get_status()}"
         )
 class TextBook(Book):
@@ -48,11 +48,11 @@ class TextBook(Book):
 
     def display_course_info(self):
         print(
-            f"Title: {self.title}, "
-            f"Author: {self.author}, "
-            f"Pages: {self.pages_count}, "
-            f"Subject: {self.subject}, "
-            f"Grade Level: {self.grade_level}, "
+            f"Title: {self.title}\n"
+            f"Author: {self.author}\n"
+            f"Pages: {self.pages_count}\n"
+            f"Subject: {self.subject}\n"
+            f"Grade Level: {self.grade_level}\n"
             f"Status: {self.get_status()}"
         )
 
@@ -67,38 +67,44 @@ class Magazine(LibraryItem):
 
     def display_issue(self):
         print(
-            f"Title: {self.title}, "
-            f"Issue: {self.issue_number}, "
-            f"Date: {self.month}/{self.year}, "
+            f"Title: {self.title}\n"
+            f"Issue: {self.issue_number}\n"
+            f"Date: {self.month}/{self.year}\n"
             f"Status: {self.get_status()}"
         )
 
 # Test your code:
 # This is just an example. You should test a lot more than this.
+print("<===========[book]===========>")
 book = Book("Harry Potter", "B001", "J.K. Rowling")
 book.set_pages_count(350)
 book.display_info()
+print("<============================>")
+print()
 
+print("<=========[CheckOut]=========>")
 book.check_out()
 book.display_info()
+print("<============================>")
+print()
 
+print("<==========[Return]==========>")
 book.return_item()
 book.display_info()
-
+print("<============================>")
 print()
+
+print("<=========[TextBook]=========>")
 textbook = TextBook("In a range of time", "T001", "Kittikawin", "History", "Highschool")
 textbook.set_pages_count(500)
 textbook.display_course_info()
-
-textbook.check_out()
-textbook.display_course_info()
-
+print("<============================>")
 print()
+
+print("<=========[Magazine]=========>")
 mag = Magazine("TIME", "M001", 202)
 mag.display_issue()
-mag.check_out()
-mag.display_issue()
-
+print("<============================>")
 
 
 
