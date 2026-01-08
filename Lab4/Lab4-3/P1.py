@@ -1,112 +1,70 @@
-from datetime import datetime
+from LibraryItem import LibraryItem, Book , TextBook, Magazine
 
-class LibraryItem:
-    def __init__(self, title, item_id):
-        self.title = title
-        self._id = item_id
-        self._checked_out = False
-    
-    def get_status(self):
-        return "Checked out" if self._checked_out else "Available"
-    
-    def check_out(self):
-        # if checked_out is False (item still in lib)
-        if not self._checked_out:
-            self._checked_out = True
-            return True
-        # can't check out if item not in lib
-        return False
-    
-    def return_item(self):
-        if self._checked_out:
-            self._checked_out = False
-            return True
-        return False
-        
-    def display_info(self):
-        print(f"Title: {self.title}\n"
-              f"ID : {self._id}\n"
-              f"Status: {self.get_status()}")
+def color_rgb(r, g, b):
+    return f"\033[38;2;{r};{g};{b}m"
 
-# implement 3 classes here
-class Book(LibraryItem):
-    def __init__(self, title, item_id, author):
-        super().__init__(title, item_id)
-        self.author = author
-        self.pages_count = 0
+print(color_rgb(255, 165, 0) + "<========[LibraryItem]========>")
+library = LibraryItem("Laptop", "L001")
+library.display_info()
+print("<=============================>")
+print()
+print(color_rgb(229, 0, 0) + "<===[CheckOut LibraryItem]===>")
+library.check_out()
+library.display_info()
+print("<============================>")
+print()
+print(color_rgb(0, 255, 0) + "<====[Return LibraryItem]====>")
+library.return_item()
+library.display_info()
+print("<============================>")
+print()
 
-    def set_pages_count(self, pages):
-        self.pages_count = pages
-
-    def display_info(self):
-        print(
-            f"Title: {self.title}\n"
-            f"ID : {self._id}\n"
-            f"Status: {self.get_status()}"
-            f"Author: {self.author}\n"
-            f"Pages: {self.pages_count}"
-        )
-class TextBook(Book):
-    def __init__(self, title, item_id, author, subject, grade_level):
-        super().__init__(title, item_id, author)
-        self.subject = subject
-        self.grade_level = grade_level
-
-    def display_info(self):
-        super().display_info()
-        print(
-            f"Subject: {self.subject}\n"
-            f"Grade Level: {self.grade_level}\n"
-        )
-
-class Magazine(LibraryItem):
-    def __init__(self, title, item_id, issue_number):
-        super().__init__(title, item_id)
-        self.issue_number = issue_number
-
-        now = datetime.now()
-        self.month = now.month
-        self.year = now.year
-
-    def display_info(self):
-        super().display_info()
-        print(
-            f"Issue: {self.issue_number}\n"
-            f"Date: {self.month}/{self.year}"
-        )
-
-# Test your code:
-# This is just an example. You should test a lot more than this.
-print("<===========[book]===========>")
+print(color_rgb(255, 165, 0) + "<===========[Book]===========>")
 book = Book("Harry Potter", "B001", "J.K. Rowling")
 book.set_pages_count(350)
 book.display_info()
 print("<============================>")
 print()
-
-print("<=========[CheckOut]=========>")
+print(color_rgb(229, 0, 0) + "<=======[CheckOut Book]======>")
 book.check_out()
 book.display_info()
 print("<============================>")
 print()
-
-print("<==========[Return]==========>")
+print(color_rgb(0, 255, 0) + "<========[Return Book]=======>")
 book.return_item()
 book.display_info()
 print("<============================>")
 print()
 
-print("<=========[TextBook]=========>")
+print(color_rgb(255, 165, 0) + "<=========[TextBook]=========>")
 textbook = TextBook("In a range of time", "T001", "Kittikawin", "History", "Highschool")
 textbook.set_pages_count(500)
 textbook.display_info()
 print("<============================>")
 print()
+print(color_rgb(229, 0, 0) + "<=======[CheckOut Book]======>")
+textbook.check_out()
+textbook.display_info()
+print("<============================>")
+print()
+print(color_rgb(0, 255, 0) + "<========[Return Book]=======>")
+textbook.return_item()
+textbook.display_info()
+print("<============================>")
+print()
 
-print("<=========[Magazine]=========>")
+print(color_rgb(255, 165, 0) + "<=========[Magazine]=========>")
 mag = Magazine("TIME", "M001", 202)
 mag.display_info()
 print("<============================>")
-
+print(color_rgb(229, 0, 0) + "<=======[CheckOut Magazine]======>")
+mag.check_out()
+mag.display_info()
+print("<============================>")
+print()
+print(color_rgb(0, 255, 0) + "<========[Return Magazine]=======>")
+mag.return_item()
+mag.display_info()
+print("<============================>\033[0m")
 
 
