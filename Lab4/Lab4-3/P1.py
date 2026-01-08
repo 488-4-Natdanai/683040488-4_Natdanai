@@ -39,7 +39,6 @@ class Book(LibraryItem):
         self.pages_count = pages
 
     def display_info(self):
-        super().display_info()
         print(
             f"Title: {self.title}\n"
             f"ID : {self._id}\n"
