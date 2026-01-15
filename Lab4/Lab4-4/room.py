@@ -7,10 +7,12 @@ class Room(ABC):
     
     @abstractmethod
     def get_purpose(self):
+        """Returns a string describing purposes of the room"""
         pass
 
     @abstractmethod
     def get_recommended_lighting(self):
+        """Returns recommended lighting in lumens per square foot"""
         pass
 
     def calculate_area(self):
@@ -30,7 +32,7 @@ class Bedroom(Room):
         return "sleeping and relaxing"
 
     def get_recommended_lighting(self):
-        return 15   # lumens per sq ft (reasonable bedroom lighting)
+        return 15
 
 
 class Kitchen(Room):
@@ -42,9 +44,25 @@ class Kitchen(Room):
         return "cooking and food preparation"
 
     def get_recommended_lighting(self):
-        return 40   # lumens per sq ft (reasonable kitchen lighting)
+        return 40
 
     def calculate_counter_space(self):
+        """Calculates the island counter area and the wall counter area.
+
+        Args:
+        No argument
+        
+        Returns:
+        float: the island counter area
+        float: the wall counter area
+
+        Raises:
+        Nothing
+
+        Examples:
+        >>> obj.calculate_counter_space()
+            (120.0, 90.0)
+        """
         area = self.calculate_area()
 
         if self.has_island:
