@@ -38,6 +38,7 @@ class StudentRegistrationForm(QWidget):
         self.date_edit.setCalendarPopup(True)
         self.date_edit.setDisplayFormat("M/dd/yy")
         self.date_edit.setDate(QDate(2000, 1, 1))
+        self.date_edit.setFixedWidth(200)
         main_layout.addWidget(self.date_edit)
 
         main_layout.addWidget(QLabel("Gender:"))
@@ -98,12 +99,18 @@ class StudentRegistrationForm(QWidget):
         button_layout.setAlignment(Qt.AlignCenter)
 
         main_layout.addLayout(button_layout)
-
+        main_layout.addSpacing(20)
         self.setLayout(main_layout)
+
+class mainwin(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("P2: Student Registration")
+        self.setFixedSize(400, 600)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = QMainWindow()
+    window = mainwin()
     window.setCentralWidget(StudentRegistrationForm())
     window.show()
     sys.exit(app.exec())
