@@ -2,10 +2,9 @@ import sys
 from PySide6.QtWidgets import (
     QApplication, QWidget, QLabel, QLineEdit, QTextEdit,
     QVBoxLayout, QHBoxLayout, QComboBox, QRadioButton,
-    QButtonGroup, QPushButton, QCheckBox, QDateEdit
+    QButtonGroup, QPushButton, QCheckBox, QDateEdit, QMainWindow
 )
 from PySide6.QtCore import QDate, Qt
-
 
 class StudentRegistrationForm(QWidget):
     def __init__(self):
@@ -99,12 +98,11 @@ class StudentRegistrationForm(QWidget):
 
         main_layout.addLayout(button_layout)
 
-
         self.setLayout(main_layout)
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = StudentRegistrationForm()
+    window = QMainWindow()
+    window.setCentralWidget(StudentRegistrationForm())
     window.show()
     sys.exit(app.exec())
