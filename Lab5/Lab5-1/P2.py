@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QHBoxLayout, QComboBox, QRadioButton,
     QButtonGroup, QPushButton, QCheckBox, QDateEdit
 )
-from PySide6.QtCore import QDate
+from PySide6.QtCore import QDate, Qt
 
 
 class StudentRegistrationForm(QWidget):
@@ -93,9 +93,8 @@ class StudentRegistrationForm(QWidget):
         self.submit_button = QPushButton("Submit Registration")
         self.submit_button.setFixedWidth(150)
 
-        button_layout.addStretch()
         button_layout.addWidget(self.submit_button)
-        button_layout.addStretch()
+        button_layout.setAlignment(Qt.AlignCenter)
 
         main_layout.addLayout(button_layout)
 
