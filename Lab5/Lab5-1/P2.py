@@ -64,6 +64,7 @@ class StudentRegistrationForm(QWidget):
 
         main_layout.addWidget(QLabel("Program:"))
         self.program_combo = QComboBox()
+        self.program_combo.setPlaceholderText("Select your program")
         self.program_combo.addItems([
             "Computer Engineering",
             "Digital Media Engineering",
