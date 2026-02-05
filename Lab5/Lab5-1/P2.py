@@ -19,6 +19,7 @@ class StudentRegistrationForm(QWidget):
 
         title = QLabel("Student Registration Form")
         title.setStyleSheet("font-size: 18px; font-weight: bold;")
+        title.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(title)
 
         main_layout.addWidget(QLabel("Full Name:"))
