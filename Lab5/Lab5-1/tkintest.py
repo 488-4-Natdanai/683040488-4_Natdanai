@@ -6,7 +6,7 @@ parent = tk.Tk()
 parent.title("Image in Tkinter")
 
 # Load the image 
-image = PhotoImage(file="img/face.png")
+image = PhotoImage(file="face.png")
 
 # Create a label to display the image
 image_label = tk.Label(parent, image=image)
