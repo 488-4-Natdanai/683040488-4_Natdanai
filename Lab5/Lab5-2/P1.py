@@ -22,7 +22,7 @@ class BMICalculator(QWidget):
         title.setFixedSize(280,35)
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("""
-            background-color: #b54a38;
+            background-color: #6f969b;
             color: white;
             font-weight: bold;
             padding: 6px;
@@ -78,6 +78,17 @@ class BMICalculator(QWidget):
         self.clear_button.setFixedSize(80, 35)
 
         self.calculate_button = QPushButton("Calculate")
+        self.calculate_button.setStyleSheet("""
+            QPushButton {
+                background-color: #6f969b;
+            }
+            QPushButton:hover {
+                background-color: #65898d;
+            }
+            QPushButton:pressed {
+                background-color: #4a6467;
+            }
+        """)
         self.calculate_button.setFixedHeight(35)
 
         button_layout.addWidget(self.clear_button)
@@ -98,7 +109,7 @@ class BMICalculator(QWidget):
         self.result_label = QLabel("0.00")
         self.result_label.setAlignment(Qt.AlignCenter)
         self.result_label.setStyleSheet("font-size: 35px; font-weight: bold;")
-        
+
         # -------------------------
         # Child
         # -------------------------
