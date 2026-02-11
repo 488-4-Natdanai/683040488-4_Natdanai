@@ -1,17 +1,18 @@
-import sys
+import sys, os
 from PySide6.QtWidgets import (
     QApplication, QWidget, QLabel, QLineEdit, QTextEdit,
     QVBoxLayout, QHBoxLayout, 
     QPushButton, QCheckBox, QMainWindow
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap, QFont
 
 class login(QWidget):
     def __init__(self):
         super().__init__()
 
         main_layout = QVBoxLayout()
-        login_layout = QHBoxLayout()
+        img_layout = QHBoxLayout()
         main_layout.setContentsMargins(40, 40, 40, 40)
         title = QLabel("LOGIN")
         title.setStyleSheet("font-size: 18px; font-weight: bold;")
@@ -37,7 +38,18 @@ class login(QWidget):
         main_layout.addWidget(QLabel("Forgot Password?", alignment= Qt.AlignRight))
 
         main_layout.addWidget(QLabel("——————————————[OR]——————————————", alignment= Qt.AlignCenter))
-
+        
+        face = QLabel()
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        face_path = os.path.join(current_dir, "img", "face.png")
+        facemap = QPixmap(face_path)
+        face.setPixmap(facemap.scaled(
+            200, 200,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        ))
+        img_layout.addWidget(face)
+        main_layout.addWidget(img_layout)
         main_layout.addWidget(QLabel("Need an account? SIGN UP", alignment= Qt.AlignCenter))
 
         main_layout.addSpacing(20)

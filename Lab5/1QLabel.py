@@ -1,4 +1,5 @@
 import sys
+import os
 from PySide6.QtWidgets import (QApplication, QMainWindow, QLabel,
                              QVBoxLayout, QWidget)
 from PySide6.QtCore import Qt
@@ -33,7 +34,9 @@ class MainWindow(QMainWindow):
         # 1) Create Widget
         image_label = QLabel()
         try:
-            pixmap = QPixmap("qrcode.jpg")
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            image_path = os.path.join(current_dir, "face.png")
+            pixmap = QPixmap(image_path)
             image_label.setPixmap(pixmap.scaled(
                 200, 200,  # width, height
                 Qt.KeepAspectRatio,  # maintain aspect ratio
