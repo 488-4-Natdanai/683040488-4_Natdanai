@@ -94,10 +94,10 @@ class InventoryApp(QMainWindow):
         quan_item.setTextAlignment(Qt.AlignCenter)
         if amount < 10:
             status_item = QTableWidgetItem("Low Stock")
-            status_item.setBackground(QColor("#d40000"))
+            status_item.setBackground(QColor("#ff7a7a"))
         else:
             status_item = QTableWidgetItem("In Stock")
-            status_item.setBackground(QColor("#00c600"))
+            status_item.setBackground(QColor("#63ff63"))
 
         # Color code the status
         # QTableItemWidget.setBackground(Qt.red)
