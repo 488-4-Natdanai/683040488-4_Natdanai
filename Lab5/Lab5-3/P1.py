@@ -176,7 +176,9 @@ class Grade_Calculator(QMainWindow):
         self.table = QTableWidget()
         #self.table.setFixedWidth(760)
         self.table.setColumnCount(8)
-        self.table.setHorizontalHeaderLabels(["Student ID", "Name", "Math", "Science", "English", "Total", "Average", "Grade"])
+        self.table.setHorizontalHeaderLabels(["Student ID", "Name", "Math", 
+                                              "Science", "English", "Total", 
+                                              "Average", "Grade"])
         
         self.table.horizontalHeader().setStretchLastSection
         self.table.setColumnWidth(0, 120) # id
@@ -189,7 +191,7 @@ class Grade_Calculator(QMainWindow):
         self.table.setColumnWidth(7, 80) # grade
         self.table.setEditTriggers(QTableWidget.NoEditTriggers)
         main_layout.addWidget(self.table)
-#==========================================================
+#======================================================================
 
     #—————————————————Logic—————————————————#
     def update_student_name(self, student_id):
