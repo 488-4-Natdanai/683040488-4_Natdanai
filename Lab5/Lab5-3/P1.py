@@ -34,6 +34,7 @@ class Grade_Calculator(QMainWindow):
         """)
         main_layout.addWidget(title)
         main_layout.addSpacing(10)
+
         #—————————————————id input—————————————————#
         id_input_layout = QHBoxLayout()
         id_input_layout.addStretch()
@@ -54,15 +55,16 @@ class Grade_Calculator(QMainWindow):
                     student_id, student_name = line.split(",", 1)
                     self.student_map[student_id] = student_name
                     self.id.addItem(student_id)
-
         id_input_layout.addWidget(self.id)
 
         #---Name---
         id_input_layout.addWidget(QLabel("Student Name: "))
+
         self.name = QLineEdit()
         self.name.setReadOnly(True)
         self.name.setFixedWidth(250)
         self.id.currentTextChanged.connect(self.update_student_name)
+        
         id_input_layout.addWidget(self.name)
         id_input_layout.addStretch()
 
@@ -305,8 +307,6 @@ class Grade_Calculator(QMainWindow):
         """Remove all entries"""
         self.table.setRowCount(0)
         
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = Grade_Calculator()
