@@ -1,0 +1,5 @@
+Name: Your name here
+Age: (Age)
+Position: Your position here
+Email: your_username@domain.name
+Favorite Color: #b0e0e6
