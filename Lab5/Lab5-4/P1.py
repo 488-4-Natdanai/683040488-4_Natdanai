@@ -97,7 +97,8 @@ class PersonalCard(QMainWindow):
         self.position_label = QLabel("Your position here")
         self.position_label.setStyleSheet("font-size: 14pt;")
         email_icon = QLabel()
-        email_icon.setPixmap(QPixmap("mail.png").scaled(18, 18, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        email__icon_file = os.path.join(dir, "mail.png")
+        email_icon.setPixmap(QPixmap(email__icon_file).scaled(18, 18, Qt.KeepAspectRatio, Qt.SmoothTransformation))
         self.email_label = QLabel("your_username@domain.name")
 
 
@@ -146,7 +147,9 @@ class PersonalCard(QMainWindow):
         pass
 
 def main():
+    sys.argv += ['-platform', 'windows:darkmode=1'] 
     app = QApplication(sys.argv)
+    app.setStyle('Fusion')
     style_file = os.path.join(dir, "P1_style.qss")
     with open(style_file, "r") as f:
         _style = f.read()
