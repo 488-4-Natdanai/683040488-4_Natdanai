@@ -1,0 +1,4 @@
+Jan,100,Electronics
+Jan,50,Food
+Feb,200,Clothing
+Mar,120,Electronics

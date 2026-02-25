@@ -46,8 +46,8 @@ class Grade_Calculator(QMainWindow):
 
         #---read file to combo box---
         self.student_map = {}
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(current_dir, "students.txt")
+        dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(dir, "students.txt")
         with open(file_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
