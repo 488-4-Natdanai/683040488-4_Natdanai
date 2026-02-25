@@ -85,7 +85,7 @@ class Monthly_Sales_Chart(QMainWindow):
 
         # ===== Chart =====
         self.plot = pg.PlotWidget()
-        self.plot.setTitle("Monthly Sales by Product Category")
+        self.plot.setTitle("Monthly Sales")
         self.plot.setLabel("left", "Sales Amount")
         self.plot.setLabel("bottom", "Month")
         self.plot.addLegend()
