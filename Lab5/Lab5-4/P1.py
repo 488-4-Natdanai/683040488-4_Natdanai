@@ -121,6 +121,7 @@ class PersonalCard(QMainWindow):
     def clear_all(self):
         self.clear_form()
         self.clear_display()
+        self.statusBar().showMessage("Form & Display cleared", 3000)
 
     def save_card(self):
         filename, _ = QFileDialog.getSaveFileName(self, "Save Card", "my_card.txt", "Text Files (*.txt)")
@@ -131,7 +132,6 @@ class PersonalCard(QMainWindow):
                     f"Age: {self.age_label.text()}\n"
                     f"Position: {self.position_label.text()}\n"
                     f"Email: {self.email_label.text()}\n"
-                    f"Color: {self.fav_color.name()}\n"
                 )
             self.statusBar().showMessage(f"Saved: {os.path.basename(filename)}", 3000)
 

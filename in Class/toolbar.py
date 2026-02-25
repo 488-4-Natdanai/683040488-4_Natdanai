@@ -77,6 +77,7 @@ class MainWindow(QMainWindow):
     def action1_triggered(self):
         print("Action 1 triggered")
 
+
     def action2_triggered(self):
         print("Action 2 triggered")
 
