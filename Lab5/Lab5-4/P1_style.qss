@@ -24,7 +24,7 @@ QComboBox::drop-down {
 }
 
 QSpinBox {
-        border: 1px solid #ccc;
+        border: 2px solid #ccc;
         border-radius: 6px;
         padding: 4px 8px;
         background: #fafafa;

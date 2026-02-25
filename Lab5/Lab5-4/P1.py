@@ -1,8 +1,8 @@
 ## For Master ##
 
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QFormLayout,
+from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QGridLayout, QVBoxLayout, QFormLayout,
                                QHBoxLayout, QLabel, QComboBox, QLineEdit, QPushButton,
-                               QFrame, QSpinBox, QColorDialog, QFileDialog, QToolBar)
+                               QFrame, QSpinBox, QColorDialog, QFileDialog, QToolBar, QStyle)
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor, QAction, QIcon, QPixmap
 import sys, os, pyperclip
@@ -53,6 +53,7 @@ class PersonalCard(QMainWindow):
         self.statusBar().showMessage("Fill in your details and click generate") 
 
     def create_form(self):
+        form_layout = QGridLayout()
         self.name = QLineEdit()
         self.name.setPlaceholderText("First name and Lastname")
         
@@ -67,7 +68,7 @@ class PersonalCard(QMainWindow):
         self.position.addItems(["Teaching Staff","Supporting Staff","Student","Visitor"])
         self.position.setPlaceholderText("Choose your position")
         self.position.setCurrentIndex(-1)
-
+        
         color_row = QWidget()
         color_layout = QHBoxLayout(color_row)
         self.fav_color = QColor(default_color)
@@ -79,6 +80,17 @@ class PersonalCard(QMainWindow):
         color_button.clicked.connect(self.pick_color)
         color_layout.addWidget(color_button)
 
+        form_layout.addWidget(QLabel("Full name:"), 0, 0)
+        form_layout.addWidget(self.name, 0, 1)
+        form_layout.addWidget(QLabel("Age:"), 1, 0)
+        form_layout.addWidget(self.age, 1, 1)
+        form_layout.addWidget(QLabel("Email:"), 2, 0)
+        form_layout.addWidget(self.email, 2, 1)
+        form_layout.addWidget(QLabel("Position:"), 3, 0)
+        form_layout.addWidget(self.position, 3, 1)
+        form_layout.addWidget(QLabel("Your favorite color:"), 4, 0)
+        form_layout.addWidget(color_row, 4, 1)
+        self.main_layout.addLayout(form_layout)
 
     def pick_color(self):
         color = QColorDialog.getColor(self.fav_color, self, "Pick a Color")
@@ -141,9 +153,54 @@ class PersonalCard(QMainWindow):
         self.clear_display()
 
     def create_menu(self):
-        pass
+        self.menu_bar = self.menuBar()
+        file_menu = self.menu_bar.addMenu("File")
 
+        gen_card_ac = QAction("Generate Card", self)
+        #gen_card_ac.triggered.connect()
+        file_menu.addAction(gen_card_ac)
+
+        save_card_ac = QAction("Save Card", self)
+        #save_card_ac.triggered.connect()
+        file_menu.addAction(save_card_ac)
+
+        clear_dis_ac = QAction("Clear Display", self)
+        #clear_dis_ac.triggered.connect()
+        file_menu.addAction(clear_dis_ac)
+
+        exit_ac = QAction("Exit", self)
+        #exit_ac.triggered.connect()
+        file_menu.addAction(exit_ac)
+
+        edit_menu = self.menu_bar.addMenu("Edit")
+
+        copy_ac = QAction("Copy Card", self)
+        #copy_ac.triggered.connect()
+        edit_menu.addAction(copy_ac)
+
+        clear_form_ac = QAction("Clear Form", self)
+        #clear_form_ac.triggered.connect()
+        edit_menu.addAction(clear_form_ac)
+        
     def create_toolbar(self):
+        toolbar = QToolBar()
+        self.addToolBar(toolbar)
+
+        gen_icon = self.style().standardIcon(QStyle.SP_CommandLink)
+        gen_action = QAction(gen_icon, "Generate Card", self)
+        #gen_action.triggered.connect()
+        toolbar.addAction(gen_action)
+
+        save_icon = self.style().standardIcon(QStyle.SP_DialogSaveButton)
+        save_action = QAction(save_icon, "Generate Card", self)
+        #save_action.triggered.connect()
+        toolbar.addAction(save_action)
+
+        clr_icon = self.style().standardIcon(QStyle.SP_DialogDiscardButton)
+        clr_action = QAction(clr_icon, "Generate Card", self)
+        #clr_action.triggered.connect()
+        toolbar.addAction(clr_action)
+
         pass
 
 def main():
