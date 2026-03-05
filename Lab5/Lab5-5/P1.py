@@ -181,6 +181,7 @@ class ConfirmDialog(QDialog):
         """)
 
         self.ok = QPushButton("OK")
+        self.ok.setFixedHeight(30)
         self.ok.setStyleSheet("""
             QPushButton {
                 background-color: #22c55e;
