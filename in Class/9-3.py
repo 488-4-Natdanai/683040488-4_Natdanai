@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (
     QFileDialog, QLineEdit, QMessageBox
 )
 from PySide6.QtCore import Qt
-
+from pathlib import Path
 
 class StudentManager(QMainWindow):
     def __init__(self):
@@ -71,14 +71,78 @@ class StudentManager(QMainWindow):
     #         and populate self.table with the data
     # ──────────────────────────────────────────────────
     def load_file(self):
-        pass
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Select a File",
+            "",
+            "All Files (*)"
+            )
+        if not path:
+            return
+        self.current_path = path
+        self.lbl_file.setText(path)
+        self.table.setRowCount(0)
+
+        with open(path, "r", newline="", encoding="utf-8") as fin:
+            reader = csv.DictReader(fin)
+            for row in reader:
+                name = row["name"]
+                score = row["score"]
+                grade = row["grade"]
+
+                r = self.table.rowCount()
+                self.table.insertRow(r)
+
+                self.table.setItem(r, 0, QTableWidgetItem(name))
+                self.table.setItem(r, 1, QTableWidgetItem(score))
+                self.table.setItem(r, 2, QTableWidgetItem(grade))
+
+        self.btn_save.setEnabled(True)
+
+        
+        self.statusBar().showMessage("CSV loaded")
 
     # ──────────────────────────────────────────────────
     # TODO 2: Read all rows from self.table,
     #         and write them to a CSV file
     # ──────────────────────────────────────────────────
     def save_file(self):
-        pass
+            path, _ = QFileDialog.getSaveFileName(
+                self,
+                "Save File",
+                "",
+                "All Files (*)"
+            )
+
+            if not path:
+                return
+
+            self.current_path = path
+
+            with open(self.current_path, "w", newline="", encoding="utf-8") as fout:
+
+                writer = csv.writer(fout)
+
+                writer.writerow(["name", "score", "grade"])
+
+                rows = self.table.rowCount()
+                cols = self.table.columnCount()
+
+                for r in range(rows):
+
+                    row_data = []
+                    for c in range(cols):
+
+                        item = self.table.item(r, c)
+
+                        if item:
+                            row_data.append(item.text())
+                        else:
+                            row_data.append("")
+
+                writer.writerow(row_data)
+
+            self.statusBar().showMessage("File Saved")
 
     # ──────────────────────────────────────────────────
     # Read the three input fields,
