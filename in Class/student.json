@@ -1,0 +1,10 @@
+{
+    "name": "Alice",
+    "score": 92,
+    "passed": true,
+    "courses": ["Math", "Physics", "CS"],
+    "address": {
+        "city": "Bangkok",
+        "zip": "10100"
+    }
+}
