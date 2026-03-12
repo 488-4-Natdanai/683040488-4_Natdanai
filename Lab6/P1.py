@@ -209,7 +209,7 @@ class AddTaskDialog(QDialog):
         # return dict of data
         task = self.inp_title.text().strip()
         prio = self.cmb_priority.currentText()
-        date = self.date_edit.date()
+        date = self.date_edit.date().toString("yyyy-MM-dd")
 
         data = {
                 "title": task,
@@ -354,19 +354,29 @@ class MainWindow(QMainWindow):
     # ── JSON IO ─────────────────────────────────
     def _save_json(self):
         path, _ = QFileDialog.getSaveFileName(
-                self,
-                "Save Task",
-                "",
-                "JSON Files (*.json)"
-            )
-        self.current_path = path
+            self,
+            "Save Task",
+            "tasks.json",
+            "JSON Files (*.json)"
+        )
 
-        with open(self.current_path, "w", newline="", encoding="utf-8") as fout:
-            json.dump(self.tasks, fout, indent=4)
+        if not path:
+            return
+
+        if not path.endswith(".json"):
+            path += ".json"
+
+        data = []
+        for t in self.tasks:
+            item = t.copy()
+            data.append(item)
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
 
     def _load_json(self):
         # load a chosen file and get data
-
+        
 
         # populate cards from data
 
