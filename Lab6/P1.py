@@ -376,16 +376,31 @@ class MainWindow(QMainWindow):
 
     def _load_json(self):
         # load a chosen file and get data
-        
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open Task",
+            "",
+            "JSON Files (*.json)"
+        )
+
+        if not path:
+            return
+
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
         # populate cards from data
+        for task in data:
+            self.tasks.append(task)
 
+            if not task.get("done"):
+                self._insert_card(task)
 
         # update the task count and check whether it's card area is empty
+        self._refresh_count()
+        self._refresh_empty()
 
-
-        QMessageBox.information(self, "Loaded", f"Loaded {len(self.tasks)} tasks.")
-
+        QMessageBox.information(self, "Loaded", f"Added {len(data)} tasks.")
     # ── helpers ─────────────────────────────────
     def _refresh_count(self):
         n    = len(self.tasks)
