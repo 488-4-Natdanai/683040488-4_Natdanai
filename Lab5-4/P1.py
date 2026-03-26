@@ -9,8 +9,6 @@ import sys, os, pyperclip
 
 dir = os.path.dirname(os.path.abspath(__file__))
 default_color = "#B0E0E6"
-
-
 class PersonalCard(QMainWindow):
     def __init__(self):
         super().__init__()
